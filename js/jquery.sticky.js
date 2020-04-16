@@ -52,7 +52,8 @@
           etse = elementTop - s.topSpacing - extra;
 
         //update height in case of dynamic content
-        s.stickyWrapper.css('height', s.stickyElement.outerHeight());
+        // s.stickyWrapper.css('height', s.stickyElement.outerHeight());
+        s.stickyWrapper.css('height', 0);
 
         if (scrollTop <= etse) {
           if (s.currentTop !== null) {
@@ -194,7 +195,8 @@
         var element = $(stickyElement);
         var stickyWrapper = element.parent();
         if (stickyWrapper) {
-          stickyWrapper.css('height', element.outerHeight());
+          // stickyWrapper.css('height', element.outerHeight());
+          stickyWrapper.css('height', 0);
         }
       },
 
