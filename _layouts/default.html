@@ -49,6 +49,34 @@
   <script src="assets/js/aos.js"></script>
 
   <script src="assets/js/main.js"></script>
+  <script>
+    $(function() {
+      $('#my-form').on('submit', function(e){
+        e.preventDefault();
+        
+        var name = $('#name').val();
+        var email = $('#email').val();
+        var message = $('#message').val();
+
+        if (isEmpty(name) || isEmpty(email) || isEmpty(message)) {
+          alert('Preencha corretamente todos os campos do formulário.')
+        } else {
+          $.ajax({
+            url: "https://formspree.io/xqkyware",
+            method: "POST",
+            data: { nome: name, email: email, mensagem: message },
+            dataType: "json"
+          });
+          alert('Contato enviado com sucesso!');
+        }
+      });
+    })
+
+    function isEmpty(val){
+      return (val === undefined || val == null || val.length <= 0) ? true : false;
+    }
+  </script>
+  
 </body>
 
 </html>

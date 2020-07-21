@@ -10,22 +10,22 @@
     </div>
     <div class="row">
       <div class="col-lg-6 mb-5">
-        <form onsubmit="sendMail()">
+        <form id="my-form">
           <div class="form-group row">
             <div class="col-md-12">
-              <input type="text" class="form-control" placeholder="Nome" id="name">
+              <input type="text" class="form-control" placeholder="Nome" name="name" id="name">
             </div>
           </div>
 
           <div class="form-group row">
             <div class="col-md-12">
-              <input type="email" class="form-control" placeholder="E-mail" id="email">
+              <input type="email" class="form-control" placeholder="E-mail" name="email" id="email">
             </div>
           </div>
 
           <div class="form-group row">
             <div class="col-md-12">
-              <textarea name="" id="message" class="form-control" placeholder="Deixe sua mensagem." cols="30" rows="10"></textarea>
+              <textarea name="message" id="message" class="form-control" placeholder="Deixe sua mensagem." cols="30" rows="10"></textarea>
             </div>
           </div>
           <div class="form-group row">
@@ -52,27 +52,3 @@
     </div>
   </div>
 </div>
-<script>
-  function sendMail() {
-    var name = $('#name').val();
-    var email = $('#email').val();
-    var message = $('#message').val();
-    var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": "https://api.sendgrid.com/v3/mail/send",
-      "method": "POST",
-      "headers": {
-        "authorization": "Bearer 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",
-        "content-type": "application/json"
-      },
-      "processData": false,
-      "data": '{"personalizations": [{"to": [{"email": "centeno@diegocenteno.com"}]}],"from": {"name" : "'+ name +'", "email": "'+ email +'"},"subject": "Contato via site","content": [{"type": "text/plain", "value": "'+ message +'"}]}'
-    }
-    $.ajax(settings).done(function (response) {
-      console.log(response);
-    });
-
-    return false;
-  }
-</script>
